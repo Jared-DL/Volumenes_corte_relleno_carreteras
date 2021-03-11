@@ -102,7 +102,7 @@ def pregunta_hacer_mas_calculos():
 1. Si
 Elección: """))
     if eleccion == 0:
-        print('Gracias por usar mi programa. Jared DL')
+        print('Gracias por usar mi programa. github.com/Jared-DL')
     elif eleccion == 1:
         eleccion_tipo_de_calculo()
     else:
