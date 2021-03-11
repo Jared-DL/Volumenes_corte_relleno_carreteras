@@ -35,7 +35,7 @@ def calculo_terraplen_excavacion():
     longitud_de_corte=area_corte*longitud_entre_areas/(area_corte+area_relleno)
     longitud_de_relleno=area_relleno*longitud_entre_areas/(area_corte+area_relleno)
     volumen_de_corte=longitud_de_corte*area_corte/2
-    volumen_de_relleno=longitud_de_relleno*area_corte/2
+    volumen_de_relleno=longitud_de_relleno*area_relleno/2
     print(f'longitud de corte Lc[m]={longitud_de_corte}')
     print(f'longitud de relleno Lr[m]={longitud_de_relleno}')
     print(f'volumen de corte Vc [m]={volumen_de_corte}')
@@ -66,14 +66,15 @@ def calculo_mixto_excavacion():
         volumen_de_corte = (area_corte1+area2)/2*longitud_entre_areas
         k=area2*area_relleno1/(area_corte1+area_relleno1)
         longitud_de_relleno = area_relleno1*longitud_entre_areas/(k+area_relleno1)
-        longitud_de_corte = longitud_de_corte-longitud_de_relleno
+        longitud_de_corte = longitud_entre_areas-longitud_de_relleno
         volumen_de_relleno = area_relleno1*longitud_de_relleno/2
     elif eleccion == 1:
-        volumen_de_relleno = (area_relleno1+area2/2*longitud_entre_areas)
-        k=area2*area_relleno1/(area_corte1+area_relleno1)
-        longitud_de_relleno = k*longitud_entre_areas/(k+area2)
-        longitud_de_corte=longitud_entre_areas-longitud_de_relleno
+        volumen_de_relleno = (area_relleno1+area2)/2*longitud_entre_areas
+        k=area2*area_corte1/(area_corte1+area_relleno1)
+        longitud_de_corte=longitud_entre_areas*area_corte1/(area_corte1+k)
+        longitud_de_relleno = longitud_entre_areas-longitud_de_corte
         volumen_de_corte = area2*longitud_de_corte/2
+    print(f'Valor de K= {k}')
     print(f'longitud de corte Lc[m]={longitud_de_corte}')
     print(f'longitud de relleno Lr[m]={longitud_de_relleno}')
     print(f'volumen de corte Vc [m]={volumen_de_corte}')
